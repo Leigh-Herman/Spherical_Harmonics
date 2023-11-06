@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 # Define the parameters for the spherical harmonics
-l = 2 # Azimuthal quantum number
-m = 1 # Magnetic quantum number
+l = 3   # Azimuthal quantum number
+m = 2   # Magnetic quantum number
 
 # Create a grid of points on the unit sphere
 theta, phi = np.mgrid[0.0:2.0 * np.pi:100j, 0.0:np.pi:50j]
@@ -28,5 +28,8 @@ ax.set_xlabel('X')
 ax.set_ylabel('Y')
 ax.set_zlabel('Z')
 ax.set_title('Spherical Harmonic (l,m) = (' + str(l) + ',' + str(m) + ')')
+
+# Save the plot as a PDF file
+plt.savefig('spherical_harmonic_l{}_m{}.pdf'.format(l, m), bbox_inches='tight', format='pdf')
 
 plt.show()
