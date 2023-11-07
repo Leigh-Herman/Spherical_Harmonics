@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\title{Spherical Harmonic Solutions}
+\author{Your Name}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+In this document, we will derive and present the solutions to the spherical harmonics using the Laplace equation. We'll separate the Laplace equation into three parts for the radial, polar, and azimuthal components and solve them individually.
+
+\section{Radial Solutions}
+
+The radial part of the solution, $R(r)$, is given by the following equation:
+
+\begin{equation}
+R(r) = \frac{C_1}{r} + \frac{C_2}{r^2}
+\end{equation}
+
+Where $C_1$ and $C_2$ are constants.
+
+
+\subsection{Radial Solution from Python}
+
+From my Python calculation:
+
+\begin{equation}
+\frac{\sqrt{2} \left(C_{1} \sin{\left(r \sqrt{- l \left(l + 1\right)} \right)} - C_{2} \cos{\left(r \sqrt{- l \left(l + 1\right)} \right)}\right)}{\sqrt{\pi} r \sqrt[4]{- l \left(l + 1\right)}}
+\end{equation}
+
+\section{Polar Solutions}
+
+The polar part of the solution, $\Theta(\theta)$, is expressed as follows:
+
+\begin{equation}
+\Theta(\theta) = C_1 P_l^m(\cos\theta) + C_2 Q_l^m(\cos\theta)
+\end{equation}
+
+Where $P_l^m(\cos\theta)$ and $Q_l^m(\cos\theta)$ are associated Legendre functions, and $C_1$ and $C_2$ are constants.
+
+\subsection{Polar Solution from Python}
+
+Polar solutions:
+
+\begin{align*}
+& C_{2} - \frac{C_{2} l \theta^{2}}{2} + \frac{C_{2} l \theta^{3} \sin{\left(\theta \right)}}{6} \\
+& - \frac{C_{2} l^{2} \theta^{2}}{2} + \frac{C_{2} l^{2} \theta^{3} \sin{\left(\theta \right)}}{6} + \frac{C_{2} l^{2} \theta^{4}}{24} \\
+& + \frac{C_{2} l^{3} \theta^{4}}{12} + \frac{C_{2} l^{4} \theta^{4}}{24} + C_{1} \theta - \frac{C_{1} \theta^{2} \sin{\left(\theta \right)}}{2} \\
+& + \frac{C_{1} \theta^{3} \sin^{2}{\left(\theta \right)}}{6} - \frac{C_{1} l \theta^{3}}{6} + \frac{C_{1} l \theta^{4} \sin{\left(\theta \right)}}{12} \\
+& - \frac{C_{1} l^{2} \theta^{3}}{6} + \frac{C_{1} l^{2} \theta^{4} \sin{\left(\theta \right)}}{12} + O\left(\theta^{6}\right)
+\end{align*}
+
+
+\section{Azimuthal Solutions}
+
+The azimuthal part of the solution, $\Phi(\phi)$, can be written as:
+
+\begin{equation}
+\Phi(\phi) = C_1\sin(m\phi) + C_2\cos(m\phi)
+\end{equation}
+
+Where $C_1$ and $C_2$ are constants, and $m$ is the magnetic quantum number.
+
+\subsection{Azimuthal Solution from Python}
+
+Azimuthal solutions:
+
+\begin{equation}
+C_{1} \sin{\left(\phi \left|{m}\right| \right)} + C_{2} \cos{\left(m \phi \right)}
+\end{equation}
+
+\section{Python Animation Explanation}
+
+The following code generates a 3D animation that visualizes a spherical harmonic function for a specific set of quantum numbers ($l$ and $m$). Here's a breakdown of the code and its interpretation:
+
+\begin{enumerate}
+	\item
+\end{enumerate}
+
+\begin{itemize}
+   \item \texttt{numpy}: For numerical operations and array handling.
+   \item \texttt{matplotlib.pyplot}: For creating 2D and 3D plots.
+   \item \texttt{matplotlib.animation}: For creating animations.
+   \item \texttt{mpl\_toolkits.mplot3d.Axes3D}: To enable 3D plotting in matplotlib.
+   \item \texttt{scipy.special.sph\_harm}: For computing spherical harmonics.
+\end{itemize}
+
+
+The animation visualizes the real part of the spherical harmonic function $Y_{lm}$ as a 3D surface on a unit sphere. The color of the surface is determined by the values of the spherical harmonics, and the animation progresses through frames, updating the spherical harmonic's appearance.
+
+The title of the 3D plot changes dynamically to indicate the quantum numbers $l$ and $m$. You can change the values of $l$ and $m$ to visualize different spherical harmonics, and you can modify the \texttt{update} function to add time-dependent effects or animations if desired.
+
+
+\section{Conclusion}
+
+We have presented the solutions to the spherical harmonics using the Laplace equation. These solutions are essential in various fields, including quantum mechanics and electromagnetism, where problems exhibit spherical symmetry.
+
+\end{document}
