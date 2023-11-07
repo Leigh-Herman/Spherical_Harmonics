@@ -4,16 +4,82 @@
 
 \begin{document}
 
-\title{Spherical Harmonic Solutions}
-\author{Your Name}
+\title{Spherical Harmonic Solutions - A Study}
+\author{DLH}
 \date{\today}
 \maketitle
 
 \section{Introduction}
 
-In this document, we will derive and present the solutions to the spherical harmonics using the Laplace equation. We'll separate the Laplace equation into three parts for the radial, polar, and azimuthal components and solve them individually.
+I wanted to start a reasonable amount of effort into answering the questions and misgivings I had with the spherical harmonics, gauge theory, and numerical analysis.
+
+I start with the derivation of the Spherical Harmonic equations.
+
+
+
+
+
+Spherical harmonics are a set of mathematical functions that arise in problems with spherical symmetry, such as those in quantum mechanics, electromagnetism, and other fields. These functions are used to represent the angular part of solutions to partial differential equations in spherical coordinates. The derivation of spherical harmonics involves several mathematical steps, and I'll provide an overview of the process.
+
+
+\begin{enumerate}
+\item Start with the Laplace equation in spherical coordinates: 
+
+\begin{equation}   
+\nabla^{2} \Psi = 0   
+\end{equation}
+
+Scalar field $ \Psi(r, \theta, \phi) $ is a function of the radial field r, polar angle $\theta$ and the azimuthal angle $\phi$. 
+
+\item Separation of Variables:
+   
+%   We assume that the solution Ψ(r, θ, φ) can be separated into three independent functions, each of which depends on one of the variables:
+   
+%  Ψ(r, θ, φ) = R(r)Θ(θ)Φ(φ)
+
+Assume that the function $\Psi$ is really three separate functions in each variable
+
+$$ \Psi(r, \theta, \phi) = R(r) \Theta(\theta) \Phi(\phi) $$
+
+which allows for an easy solution to the Laplace equation on the scalar field.
+
+\item Solve for Radial Equation:
+ Substitution of $\Psi$ will produce
+ 
+ \begin{equation}
+ 1 = 2
+ \end{equation}
+
+%3. Solve for the Radial Equation (R(r)):
+   
+%   By substituting the separated solution into the Laplace equation and dividing by Ψ, you obtain three separate equations for each of the functions R, Θ, and Φ. The equation for R is the radial equation, and it can be solved independently of the other two.
+
+%4. Solve for the Polar Equation (Θ(θ)):
+   
+%   The polar equation, which depends on Θ, is typically the associated Legendre equation. The solutions to this equation are the associated Legendre polynomials, denoted by P_l^m(θ), where "l" is a non-negative integer and "m" is an integer such that |m| <= l.
+
+%5. Solve for the Azimuthal Equation (Φ(φ)):
+   
+%   The azimuthal equation, which depends on Φ, is a simple harmonic oscillator equation. The solutions to this equation are complex exponentials or trigonometric functions, depending on the boundary conditions. These solutions are denoted as e^(imφ), where "m" is an integer.
+
+%6. Combine the Solutions:
+   
+%   The general solution for Ψ(r, θ, φ) is obtained by multiplying the solutions for R, Θ, and Φ:
+
+%   Ψ(r, θ, φ) = R(r)P_l^m(θ)e^(imφ)
+
+   Here, "l" is the azimuthal quantum number, and "m" is the magnetic quantum number.
+\end{enumerate}
+
+
+%The resulting function Ψ(r, θ, φ) is the spherical harmonic function. The spherical harmonics are labeled by two quantum numbers, "l" and "m," and they form a complete orthonormal basis for functions on the unit sphere.
+
+%The spherical harmonics are widely used in various fields, including quantum mechanics, electromagnetism, and signal processing, to describe and analysis problems with spherical symmetry. They play a crucial role in solving problems in these domains and have many useful properties, making them an essential mathematical tool.
+
 
 \section{Radial Solutions}
+
+I would imagine this is for a simple Newtonian solution or something. 
 
 The radial part of the solution, $R(r)$, is given by the following equation:
 
@@ -26,7 +92,7 @@ Where $C_1$ and $C_2$ are constants.
 
 \subsection{Radial Solution from Python}
 
-From my Python calculation:
+From my Python calculation for any l.
 
 \begin{equation}
 \frac{\sqrt{2} \left(C_{1} \sin{\left(r \sqrt{- l \left(l + 1\right)} \right)} - C_{2} \cos{\left(r \sqrt{- l \left(l + 1\right)} \right)}\right)}{\sqrt{\pi} r \sqrt[4]{- l \left(l + 1\right)}}
@@ -47,10 +113,7 @@ Where $P_l^m(\cos\theta)$ and $Q_l^m(\cos\theta)$ are associated Legendre functi
 Polar solutions:
 
 \begin{align*}
-& C_{2} - \frac{C_{2} l \theta^{2}}{2} + \frac{C_{2} l \theta^{3} \sin{\left(\theta \right)}}{6} \\
-& - \frac{C_{2} l^{2} \theta^{2}}{2} + \frac{C_{2} l^{2} \theta^{3} \sin{\left(\theta \right)}}{6} + \frac{C_{2} l^{2} \theta^{4}}{24} \\
-& + \frac{C_{2} l^{3} \theta^{4}}{12} + \frac{C_{2} l^{4} \theta^{4}}{24} + C_{1} \theta - \frac{C_{1} \theta^{2} \sin{\left(\theta \right)}}{2} \\
-& + \frac{C_{1} \theta^{3} \sin^{2}{\left(\theta \right)}}{6} - \frac{C_{1} l \theta^{3}}{6} + \frac{C_{1} l \theta^{4} \sin{\left(\theta \right)}}{12} \\
+& R(r) = C_{2} - \frac{C_{2} l \theta^{2}}{2} + \frac{C_{2} l \theta^{3} \sin{\left(\theta \right)}}{6} - \frac{C_{2} l^{2} \theta^{2}}{2} + \frac{C_{2} l^{2} \theta^{3} \sin{\left(\theta \right)}}{6} + \frac{C_{2} l^{2} \theta^{4}}{24} + \frac{C_{2} l^{3} \theta^{4}}{12} \\ & + \frac{C_{2} l^{4} \theta^{4}}{24} + C_{1} \theta - \frac{C_{1} \theta^{2} \sin{\left(\theta \right)}}{2} + \frac{C_{1} \theta^{3} \sin^{2}{\left(\theta \right)}}{6} - \frac{C_{1} l \theta^{3}}{6} + \frac{C_{1} l \theta^{4} \sin{\left(\theta \right)}}{12} \\
 & - \frac{C_{1} l^{2} \theta^{3}}{6} + \frac{C_{1} l^{2} \theta^{4} \sin{\left(\theta \right)}}{12} + O\left(\theta^{6}\right)
 \end{align*}
 
